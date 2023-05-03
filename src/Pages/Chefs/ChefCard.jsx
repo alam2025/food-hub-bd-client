@@ -3,8 +3,8 @@ import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
-      const { pictureUrl, chefName, yearsOfExperience, numRecipes, likes } = chef;
-      console.log(chef);
+      const { id,pictureUrl, chefName, yearsOfExperience, numRecipes, likes } = chef;
+      
       return (
             <Col >
                   <Card >
@@ -18,7 +18,7 @@ const ChefCard = ({ chef }) => {
                               </div>
                         </Card.Body>
                         <Card.Footer className='px-0 pb-0   d-flex justify-content-center border-0 bg-transparent'>
-                              <Link className='w-100 text-center text-decoration-none text-white  py-2 border-0 rounded-bottom-2 btn-primary'>
+                              <Link to={`/recipes/${id}`} className='w-100 text-center text-decoration-none text-white  py-2 border-0 rounded-bottom-2 btn-primary'>
                               View Recipes
                               </Link>
                               {/* */}

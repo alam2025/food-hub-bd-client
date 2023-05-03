@@ -8,7 +8,7 @@ const NavigateBar = () => {
 
       return (
             <div >
-                  <Navbar  expand="lg mb-5">
+                  <Navbar  expand="lg mb-2">
                         <Container fluid>
                               <Navbar.Brand href="#"><img className=' w-25' src={logo} alt="" /></Navbar.Brand>
                               <Navbar.Toggle aria-controls="navbarScroll" />

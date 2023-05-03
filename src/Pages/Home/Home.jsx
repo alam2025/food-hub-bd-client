@@ -7,7 +7,7 @@ import ChefCard from '../Chefs/ChefCard';
 const Home = () => {
       const chefs = useLoaderData()
 
-      console.log(chefs);
+     
       return (
             <div className=' container mt-5'>
                   <h1 className='my-5'>Popular Chefs</h1>

@@ -5,7 +5,7 @@ import Footer from '../Pages/Shared/Footer';
 
 const MainLayout = () => {
       return (
-            <div className=' d-flex flex-column min-vh-100'>
+            <div style={{ minHeight: '100vh' }} className=' d-flex flex-column '>
                   <Header/>
                   <Outlet/>
                   <Footer/>
