@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const RegistrationForm = () => {
-
+const {createUser}= useContext(AuthContext);
 
       const handleSubmit = (event) => {
             event.preventDefault();
-            console.log('Submitting form with')
+            const form = event.target;
+            const email= form.email.value;
+            const password= form.password.value;
+            const name= form.name.value;
+            const photoUrl= form.photourl.value;
+            // console.log(name,email,password,photoUrl);
+
+            createUser(email,password)
+            .then(result=>{
+                  const user = result.user;
+                  console.log(user);
+            }).catch(error=>console.log(error.message))
+
       };
 
       return (
@@ -20,6 +33,8 @@ const RegistrationForm = () => {
                               <Form.Control
                                     type="text"
                                     placeholder="Enter username"
+                                    name='name'
+                                    required
 
                               />
                         </Form.Group>
@@ -29,6 +44,8 @@ const RegistrationForm = () => {
                               <Form.Control
                                     type="email"
                                     placeholder="Enter email"
+                                    name='email'
+                                    required
 
                               />
                         </Form.Group>
@@ -38,6 +55,8 @@ const RegistrationForm = () => {
                               <Form.Control
                                     type="password"
                                     placeholder="Enter password"
+                                    name='password'
+                                    required
 
                               />
                         </Form.Group>
@@ -47,6 +66,7 @@ const RegistrationForm = () => {
                               <Form.Control
                                     type="text"
                                     placeholder="Enter photo URL"
+                                    name='photourl'
 
                               />
                         </Form.Group>
