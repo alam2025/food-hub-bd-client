@@ -8,22 +8,22 @@ const NavigateBar = () => {
 
       return (
             <div >
-                  <Navbar  expand="lg mb-2">
+                  <Navbar expand="lg mb-2">
                         <Container fluid>
                               <Navbar.Brand href="#"><img className=' w-25' src={logo} alt="" /></Navbar.Brand>
                               <Navbar.Toggle aria-controls="navbarScroll" />
                               <Navbar.Collapse id="navbarScroll">
                                     <Nav
-                                          className="me-auto my-2 my-lg-0 d-flex gap-4 "
+                                          className="me-3 my-2 my-lg-0 d-flex gap-4 "
                                           style={{ maxHeight: '100px' }}
-                                          navbarScroll
-                                    >
+                                          navbarScroll >
                                           <Link to='/' className=' text-decoration-none text-dark'>Home</Link>
-                                          <Link to='/blog' className='text-dark text-decoration-none'>Blog</Link>          
+                                          <Link to='/blog' className='text-dark text-decoration-none'>Blog</Link>
                                     </Nav>
 
-                                    <div className="d-flex">
-                                          alam
+                                    <div className="d-flex gap-3">
+                                          <Link to='/login' className=' text-decoration-none text-dark'>Login</Link>
+                                          <Link to='/register' className=' text-decoration-none text-dark'>Register</Link>
 
                                     </div>
                               </Navbar.Collapse>

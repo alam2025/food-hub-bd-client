@@ -5,9 +5,14 @@ import Home from "../Pages/Home/Home";
 import RecipeLayout from "../Layout/RecipeLayout";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import RecipePortal from "../Pages/RecipesPortal/RecipePortal";
+import Login from "../Pages/Login/Login"
+import Register from "../Pages/Login/Register";
+
+
 
 
 const router = createBrowserRouter([
+
       {
             path: '/',
             element: <MainLayout />,
@@ -20,25 +25,39 @@ const router = createBrowserRouter([
                         element: <Home />,
                         loader: () => fetch('http://localhost:3000/chefs')
                   },
-                  {
-                        path: 'blog',
-                        element: <Blog />
-                  }
             ]
       },
       {
             path: 'recipes',
             element: <RecipeLayout />,
-            errorElement:<ErrorPage/>,
-            children:[
+            errorElement: <ErrorPage />,
+            children: [
                   {
-                        path:':id',
-                        element: <RecipePortal/>,
-                        loader:({params})=>fetch(`http://localhost:3000/chef/${params.id}`)
+                        path: ':id',
+                        element: <RecipePortal />,
+                        loader: ({ params }) => fetch(`http://localhost:3000/chef/${params.id}`)
                   }
 
             ]
-      }
+      },
+     {
+      path:'login',
+      element: <Login/>
+     },
+     {
+      path: 'register',
+      element: <Register/>
+     }
+      //      {
+      //       path:'login',
+      //       element: <LoginLayout/>,
+      //       children:[
+      //             {
+      //                   path:'/',
+      //                   element: <Login/>
+      //             }
+      //       ]
+      //      }
 ])
 
 

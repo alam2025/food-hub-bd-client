@@ -11,6 +11,7 @@ const RecipeLayout = () => {
                   
                   <ChefProfileBanner/>
                   <Outlet />
+                  
 
                   <Footer />
             </div>
