@@ -40,15 +40,26 @@ const AuthProvider = ({ children }) => {
 
       // user profile set 
       const userProfile = (name, photoUrl) => {
-            return updateProfile(user, {
-                  displayName: name, photoURL: photoUrl
-            })
-      }
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+                  updateProfile(currentUser, {
+                        displayName: name,
+                        photoURL: photoUrl
+                  })
+                        .then(() => {
+                              
+                        })
+                        .catch((error) => {
+                              
+                        });
+            } else {
+                  console.log('No user is currently signed in.');
+            }
+      };
       // current user 
       useEffect(() => {
             const unsubscribe = onAuthStateChanged(auth, currentUser => {
                   setUser(currentUser)
-
             })
             return () => {
                   return unsubscribe;
@@ -62,7 +73,8 @@ const AuthProvider = ({ children }) => {
             googleSignIn,
             githubSignIn,
             logOut,
-           
+            userProfile
+
 
       }
       return (

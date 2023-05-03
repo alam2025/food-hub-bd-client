@@ -7,12 +7,18 @@ import { FcGoogle } from "react-icons/fc";
 
 
 const LoginForm = () => {
+      const [success, setSuccess] = useState('')
+      const [error, setError] = useState('')
       const { userSignIn } = useContext(AuthContext);
       const { googleSignIn } = useContext(AuthContext);
       const { githubSignIn } = useContext(AuthContext);
 
       const handleSubmit = (event) => {
             event.preventDefault();
+
+            setSuccess('')
+            setError('')
+
             const form = event.target;
             const email = form.email.value;
             const password = form.password.value;
@@ -21,30 +27,40 @@ const LoginForm = () => {
                   .then(result => {
                         const user = result.user;
                         console.log(user);
-                  }).catch(error => console.log(error.message))
+                        setSuccess('Successfully Login')
+                  }).catch(error => setError(error.message))
 
       };
 
       const handleGoogleSignIn = () => {
+            setSuccess('')
+            setError('')
             googleSignIn()
                   .then(result => {
+
                         const user = result.user;
                         console.log(user);
-                  }).catch(error => console.log(error.message))
+                        setSuccess('Successfully Login')
+                  }).catch(error => setError(error.message))
 
       }
 
       const handleGithubSignIn = () => {
+            setSuccess('')
+            setError('')
             githubSignIn()
                   .then(result => {
                         const user = result.user;
                         console.log(user);
-                  }).catch(error => console.log(error.message))
+                        setSuccess('Successfully Login')
+                  }).catch(error => setError(error.message))
       }
 
       return (
             <div className=' sm-w-90 md-w-70 lg-w-60 mx-auto border p-5 mt-3 mb-5 rounded'>
                   <h3>Please Login</h3>
+                  {success && <p className=' text-success'>{success}</p>}
+                  {error && <p className=' text-danger'>{error}</p>}
                   <Form className=' d-flex flex-column gap-4' onSubmit={handleSubmit}>
                         <Form.Group controlId="formBasicUsername">
                               <Form.Label>Email Address</Form.Label>

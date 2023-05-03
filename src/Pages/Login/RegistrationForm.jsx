@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const RegistrationForm = () => {
-      const { createUser } = useContext(AuthContext);
+      const { createUser, userProfile,logOut } = useContext(AuthContext);
+      const [success, setSuccess]=useState('')
+      const [error, setError]=useState('')
 
       const handleSubmit = (event) => {
             event.preventDefault();
+
+            setSuccess('')
+            setError('')
+
             const form = event.target;
             const email = form.email.value;
             const password = form.password.value;
@@ -19,9 +25,17 @@ const RegistrationForm = () => {
             createUser(email, password)
                   .then(result => {
                         const user = result.user;
-                        console.log(user);
-                        
-                  }).catch(error => console.log(error.message))
+                        userProfile(name, photoUrl)
+                        setSuccess('Successfully Registered')
+                        logOut()
+                        setError('')
+
+                  }).catch(error => {
+                        console.log(error.message)
+                        setSuccess('')
+                  })
+
+            
 
       };
 
@@ -29,6 +43,8 @@ const RegistrationForm = () => {
             <div className=' sm-w-90 md-w-70 lg-w-60 mx-auto border p-5 mt-3 mb-5 rounded'>
 
                   <h3>Please Registration</h3>
+                  {success && <p className=' text-success'>{success}</p>}
+                  {error && <p className=' text-danger'>{error}</p>}
                   <Form className=' d-flex flex-column gap-4' onSubmit={handleSubmit}>
                         <Form.Group controlId="formBasicUsername">
                               <Form.Label>Username</Form.Label>

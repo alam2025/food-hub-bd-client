@@ -5,7 +5,7 @@ import RegistrationForm from './RegistrationForm';
 
 const Register = () => {
       return (
-            <div style={{ minHeight: '100vh' }} className=' d-flex flex-column'>
+            <div style={{ minHeight: '100vh' }} className=' d-flex flex-column container'>
                  <NavigateBar/>
                  <RegistrationForm/>
                  <Footer/>

@@ -36,7 +36,7 @@ const NavigateBar = () => {
                                           user ? <>
                                                 {
                                                       user.photoURL ? <>
-                                                            <img className=' bg-light me-3 rounded-circle w-25' src={user?.photoURL} alt="profile" />
+                                                            <img style={{width:'60px', height:'60px'}} className=' bg-light me-3 rounded-circle ' src={user?.photoURL} alt="profile" />
                                                       </> : <CgProfile className=' me-3' size={40}/>
                                                 }
                                                 <Button onClick={handleSignOut} variant='outline-secondary'>Logout</Button>
