@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -8,6 +8,8 @@ import { FcGoogle } from "react-icons/fc";
 
 const LoginForm = () => {
       const { userSignIn } = useContext(AuthContext);
+      const { googleSignIn } = useContext(AuthContext);
+      const { githubSignIn } = useContext(AuthContext);
 
       const handleSubmit = (event) => {
             event.preventDefault();
@@ -22,6 +24,23 @@ const LoginForm = () => {
                   }).catch(error => console.log(error.message))
 
       };
+
+      const handleGoogleSignIn = () => {
+            googleSignIn()
+                  .then(result => {
+                        const user = result.user;
+                        console.log(user);
+                  }).catch(error => console.log(error.message))
+
+      }
+
+      const handleGithubSignIn = () => {
+            githubSignIn()
+                  .then(result => {
+                        const user = result.user;
+                        console.log(user);
+                  }).catch(error => console.log(error.message))
+      }
 
       return (
             <div className=' sm-w-90 md-w-70 lg-w-60 mx-auto border p-5 mt-3 mb-5 rounded'>
@@ -52,20 +71,25 @@ const LoginForm = () => {
                         <Button variant="primary" type="submit">
                               Login
                         </Button>
-                        
 
-                        <Button className='d-flex justify-content-center align-items-center gap-2 bg-white' variant="light">
+
+
+
+
+                  </Form>
+                  <div className=' d-flex flex-column justify-content-center align-items-center gap-2'>
+                        <Button onClick={handleGoogleSignIn} className='d-flex justify-content-center align-items-center gap-2 bg-white' variant="light">
                               <FcGoogle size={25} />
                               <span>Sign In With Google</span>
 
                         </Button>
-                        <Button className='d-flex justify-content-center align-items-center gap-2' variant="secondary">
-                              <FaGithub  size={25}/>
+                        <Button onClick={handleGithubSignIn} className='d-flex justify-content-center align-items-center gap-2' variant="secondary">
+                              <FaGithub size={25} />
                               <span>Sign In With GitHub</span>
 
                         </Button>
                         <p>Don't Have an Account? Please <Link to='/register'>Register</Link></p>
-                  </Form>
+                  </div>
             </div>
       );
 };

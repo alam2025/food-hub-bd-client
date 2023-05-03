@@ -2,24 +2,26 @@ import React, { useContext } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const RegistrationForm = () => {
-const {createUser}= useContext(AuthContext);
+      const { createUser } = useContext(AuthContext);
 
       const handleSubmit = (event) => {
             event.preventDefault();
             const form = event.target;
-            const email= form.email.value;
-            const password= form.password.value;
-            const name= form.name.value;
-            const photoUrl= form.photourl.value;
+            const email = form.email.value;
+            const password = form.password.value;
+            const name = form.name.value;
+            const photoUrl = form.photourl.value;
             // console.log(name,email,password,photoUrl);
 
-            createUser(email,password)
-            .then(result=>{
-                  const user = result.user;
-                  console.log(user);
-            }).catch(error=>console.log(error.message))
+            createUser(email, password)
+                  .then(result => {
+                        const user = result.user;
+                        console.log(user);
+                        
+                  }).catch(error => console.log(error.message))
 
       };
 
