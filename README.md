@@ -10,12 +10,14 @@
 
 ### ALL API ###
  **Chefs**
-  [All Chefs Api](https://food-hub-server-alam2025.vercel.app/chefs)
-  [Specific Chefs Api](https://food-hub-server-alam2025.vercel.app/chefs/${id})
+  * [All Chefs Api](https://food-hub-server-alam2025.vercel.app/chefs)
+
+  * [Specific Chefs Api](https://food-hub-server-alam2025.vercel.app/chefs/${id})
 
 **Recipe API**
- [Under Chef](https://food-hub-server-alam2025.vercel.app/chef/${id})
- [All Recipes](https://food-hub-server-alam2025.vercel.app/recipes)
+ * [Under Chef](https://food-hub-server-alam2025.vercel.app/chef/${id})
+
+ * [All Recipes](https://food-hub-server-alam2025.vercel.app/recipes)
 
 
 ### Home Page ##
