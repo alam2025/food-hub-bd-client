@@ -1,11 +1,11 @@
 # b7a10-chef-recipe-hunter-client-side-alam2025
 
 ## Food Hub BD ##
- [Website Live Link :](https://food-hub-bd.web.app/)
+ [Website Live Link ](https://food-hub-bd.web.app/)
 
- [Github client side:](https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-client-side-alam2025)
+ [Github client side](https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-client-side-alam2025)
 
- [Github Server side :](https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-alam2025)
+ [Github Server side ](https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-alam2025)
 
 
 ### ALL API ###
