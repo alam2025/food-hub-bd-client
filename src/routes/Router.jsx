@@ -7,6 +7,9 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import RecipePortal from "../Pages/RecipesPortal/RecipePortal";
 import Login from "../Pages/Login/Login"
 import Register from "../Pages/Login/Register";
+import RecipeDetails from "../Pages/PopularRecipe/RecipeDetails";
+import PopularRecipe from "../Pages/PopularRecipe/PopularRecipe";
+import PopularRecipeLayput from "../Layout/PopularRecipeLayput";
 
 
 
@@ -37,8 +40,20 @@ const router = createBrowserRouter([
                         element: <RecipePortal />,
                         loader: ({ params }) => fetch(`http://localhost:3000/chef/${params.id}`)
                   }
-
             ]
+      },
+      {
+            path:'popular-recipe',
+            element: <PopularRecipeLayput/>,
+            errorElement: <ErrorPage/>,
+            children:[
+                  {
+                        path:':id',
+                        element: <RecipeDetails/>,
+                        loader:({params})=>fetch(`http://localhost:3000/popular-recipe/${params.id}`)
+                  }
+            ]
+
       },
      {
       path:'login',
@@ -48,16 +63,7 @@ const router = createBrowserRouter([
       path: 'register',
       element: <Register/>
      }
-      //      {
-      //       path:'login',
-      //       element: <LoginLayout/>,
-      //       children:[
-      //             {
-      //                   path:'/',
-      //                   element: <Login/>
-      //             }
-      //       ]
-      //      }
+     
 ])
 
 

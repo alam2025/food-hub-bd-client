@@ -22,10 +22,10 @@ const NavigateBar = () => {
 
       }
       return (
-            <div >
+            <div className='container'>
                   <Navbar expand="lg mb-2">
                         <Container fluid>
-                              <Navbar.Brand href="#"><img className=' w-25' src={logo} alt="" /></Navbar.Brand>
+                              <Navbar.Brand href="/"><img className=' w-25' src={logo} alt="" /></Navbar.Brand>
                               <Navbar.Toggle aria-controls="navbarScroll" />
                               <Navbar.Collapse id="navbarScroll">
                                     <Nav

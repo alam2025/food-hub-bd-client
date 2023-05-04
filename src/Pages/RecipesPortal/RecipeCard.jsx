@@ -9,7 +9,7 @@ const RecipeCard = ({ recipe }) => {
       const [showToast, setShowToast] = useState(false);
       const [isDisabled, setIsDisabled] = useState(false);
 
-      console.log(recipe);
+      // console.log(recipe);
       const { recipe_name, ingredients, cooking_method, rating, id } = recipe;
 
       const handleClick = () => {
@@ -32,14 +32,14 @@ const RecipeCard = ({ recipe }) => {
                               <p>{cooking_method}</p>
                         </div>
 
-                        <div>
+                        <div className='d-flex justify-centent-center align-items-center gap-2'>
                               <Rating
                                     placeholderRating={rating}
                                     readonly
                                     emptySymbol={<FaRegStar />}
                                     placeholderSymbol={<FaStar className=' text-warning ' />}
                                     fullSymbol={<FaStar />}
-                              />
+                              /> <span className=' fs-4 fw-bold'>{rating}</span>
                         </div>
 
 

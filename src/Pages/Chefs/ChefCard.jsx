@@ -8,7 +8,7 @@ const ChefCard = ({ chef }) => {
       return (
             <Col >
                   <Card >
-                        <Card.Img variant="top" src={pictureUrl} alt={chefName} />
+                        <Card.Img variant="top" style={{height:'300px'}} src={pictureUrl} alt={chefName} />
                         <Card.Body>
                               <Card.Title>{chefName}</Card.Title>
                               <div className=' d-flex flex-column gap-0'>
