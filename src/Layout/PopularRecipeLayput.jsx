@@ -9,7 +9,10 @@ const PopularRecipeLayput = () => {
       const {loading}= useContext(AuthContext)
       if(loading){
             return <div style={{height:'200px'}} className='d-flex justify-content-center align-items-center '>
-                  <Spinner   animation="border" variant="info" />
+                  <Spinner animation="border" variant="primary" />
+                  <Spinner animation="border" variant="secondary" />
+                  <Spinner animation="border" variant="success" />
+                  <Spinner animation="border" variant="danger" />
             </div>
       }
       return (
