@@ -1,10 +1,16 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+import { BsDownload } from "react-icons/bs";
+
 
 const BlogDetails = () => {
+      const handleDownloadPdf = () => {
+      }
       return (
             <div className=' my-5 container'>
-                  <div className='text-center mb-5'>
+                  <div className='mb-5 d-flex gap-3 justify-content-center align-items-center'>
                         <h1>Important Blogs</h1>
+                        <Button onClick={handleDownloadPdf} className='border-0'><BsDownload size={40}/></Button>
                   </div>
                   <div>
                         <h3>Differences between uncontrolled and controlled components:</h3>

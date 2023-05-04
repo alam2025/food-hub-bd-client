@@ -21,13 +21,13 @@ const router = createBrowserRouter([
             path: '/',
             element: <MainLayout />,
             errorElement: <ErrorPage />,
-            loader: () => fetch('http://localhost:3000/recipes'),
+            loader: () => fetch('https://food-hub-server-alam2025.vercel.app/recipes'),
 
             children: [
                   {
                         path: '/',
                         element: <Home />,
-                        loader: () => fetch('http://localhost:3000/chefs')
+                        loader: () => fetch('https://food-hub-server-alam2025.vercel.app/chefs')
                   },
             ]
       },
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
                   {
                         path: ':id',
                         element: <PrivateRouter><RecipePortal /></PrivateRouter>,
-                        loader: ({ params }) => fetch(`http://localhost:3000/chef/${params.id}`)
+                        loader: ({ params }) => fetch(`https://food-hub-server-alam2025.vercel.app/chef/${params.id}`)
                   }
             ]
       },
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
                   {
                         path:':id',
                         element: <PrivateRouter><RecipeDetails/></PrivateRouter>,
-                        loader:({params})=>fetch(`http://localhost:3000/popular-recipe/${params.id}`)
+                        loader:({params})=>fetch(`https://food-hub-server-alam2025.vercel.app/popular-recipe/${params.id}`)
                   }
             ]
 

@@ -14,7 +14,7 @@ const RecipePortal = () => {
       // chef data load 
       useEffect(() => { 
             
-            fetch(`http://localhost:3000/chefs/${id}`)
+            fetch(`https://food-hub-server-alam2025.vercel.app/chefs/${id}`)
             .then(res=>res.json())
             .then(data=>setChef(data))
             
