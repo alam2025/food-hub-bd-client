@@ -11,6 +11,7 @@ import RecipeDetails from "../Pages/PopularRecipe/RecipeDetails";
 import PopularRecipe from "../Pages/PopularRecipe/PopularRecipe";
 import PopularRecipeLayput from "../Layout/PopularRecipeLayput";
 import PrivateRouter from "./PrivateRouter";
+import Favourite from "../Pages/Favourite/Favourite";
 
 
 
@@ -67,6 +68,11 @@ const router = createBrowserRouter([
      {
       path:'blog',
       element:<Blog/>,
+     },
+     {
+      path:'favourite',
+      element: <Favourite/>,
+      loader: () => fetch('https://food-hub-server-alam2025.vercel.app/recipes'),
      }
      
 ])

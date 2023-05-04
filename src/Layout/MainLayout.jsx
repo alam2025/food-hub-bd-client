@@ -8,6 +8,7 @@ import { Spinner } from 'react-bootstrap';
 export const RecipeContext = createContext(null)
 const MainLayout = () => {
       const { loading } = useContext(AuthContext)
+      
       if (loading) {
             return <div style={{ height: '200px' }} className='d-flex justify-content-center align-items-center '>
                   <Spinner animation="border" variant="primary" />

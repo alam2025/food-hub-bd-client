@@ -3,6 +3,7 @@ import { Button, Card, Toast } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Toaster, toast } from 'react-hot-toast';
+import { addToDb } from '../../utilities/fakedb';
 
 
 const RecipeCard = ({ recipe }) => {
@@ -12,7 +13,9 @@ const RecipeCard = ({ recipe }) => {
       // console.log(recipe);
       const { recipe_name, ingredients, cooking_method, rating, id } = recipe;
 
-      const handleClick = () => {
+      const handleClick = (id) => {
+            addToDb(id)
+            
            toast.success('This recipe is now one of your favorites!')
             setIsDisabled(true);
       }
@@ -45,8 +48,9 @@ const RecipeCard = ({ recipe }) => {
 
                         <Button
                               className='btn-primary border-0'
-                              onClick={handleClick}
+                              onClick={()=>handleClick(id)}
                               disabled={isDisabled}
+                              
                         >
                               Favorite button
                         </Button>

@@ -27,13 +27,20 @@ const NavigateBar = () => {
                         <Container fluid>
                               <Link to='/'><Navbar.Brand ><img className=' w-25' src={logo} alt="" /></Navbar.Brand></Link>
                               <Navbar.Toggle aria-controls="navbarScroll" />
-                              <Navbar.Collapse id="navbarScroll">
-                                    <Nav
-                                          className="me-3 my-2 my-lg-0 d-flex gap-4 "
+                              <Navbar.Collapse id="navbarScroll ">
+                                    <Nav className="me-3 my-2 my-lg-0 d-flex gap-4 "
                                           style={{ maxHeight: '100px' }}
                                           navbarScroll >
+
                                           <Link to='/' className={`text-decoration-none text-dark px-2 py-1 ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
+
                                           <Link to='/blog' className={`text-decoration-none px-2 py-1 text-dark ${location.pathname === '/blog' ? 'active' : ''}`}>Blog</Link>
+
+                                          <Link to='/favourite' className={`position-relative text-decoration-none me-5 px-2 py-1 text-dark ${location.pathname === '/favourite' ? 'active' : ''}`}>
+                                               
+                                                Favourite
+                                                
+                                          </Link>
                                     </Nav>
 
                                     {user ? (
