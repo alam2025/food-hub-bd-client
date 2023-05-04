@@ -1,16 +1,42 @@
-import React from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { BsDownload } from "react-icons/bs";
 
 
 const BlogDetails = () => {
-      const handleDownloadPdf = () => {
+      const [loader, setLoader] = useState(false);
+
+      const downloadPDF = () => {
+            const capture = document.querySelector('.blog');
+            setLoader(true);
+            html2canvas(capture).then((canvas) => {
+                  const imgData = canvas.toDataURL('img/png');
+                  const doc = new jsPDF('p', 'mm', 'a4');
+                  const componentWidth = doc.internal.pageSize.getWidth();
+                  const componentHeight = doc.internal.pageSize.getHeight();
+                  doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+                  setLoader(false);
+                  doc.save('blog.pdf');
+            })
       }
       return (
-            <div className=' my-5 container'>
+            <div className=' my-5 container blog'>
                   <div className='mb-5 d-flex gap-3 justify-content-center align-items-center'>
                         <h1>Important Blogs</h1>
-                        <Button onClick={handleDownloadPdf} className='border-0'><BsDownload size={40}/></Button>
+                        <Button
+                              className='border-0'
+                              onClick={downloadPDF}
+                              disabled={!(loader === false)}
+                        >
+                              
+                              {loader ? (
+                                    <span>Downloading</span>
+                              ) : (
+                                    <span><BsDownload size={40} /></span>
+                              )}
+                        </Button>
                   </div>
                   <div>
                         <h3>Differences between uncontrolled and controlled components:</h3>

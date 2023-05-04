@@ -40,6 +40,17 @@
       background-color: rgb(176, 168, 168);
       border-radius: 5px;
 }
+
+.blog{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 7px;
+      background-color: #fff;
+      padding: 0 50px
+    }
 @media (max-width:576px) {
       .sm-w-90 {
             max-width: 90%;
