@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 
 const LoginForm = () => {
+      const navigate= useNavigate()
       const [success, setSuccess] = useState('')
       const [error, setError] = useState('')
       const { userSignIn } = useContext(AuthContext);
@@ -28,6 +29,7 @@ const LoginForm = () => {
                         const user = result.user;
                         console.log(user);
                         setSuccess('Successfully Login')
+                        navigate('/')
                   }).catch(error => setError(error.message))
 
       };
@@ -41,6 +43,7 @@ const LoginForm = () => {
                         const user = result.user;
                         console.log(user);
                         setSuccess('Successfully Login')
+                        navigate('/')
                   }).catch(error => setError(error.message))
 
       }
@@ -53,6 +56,7 @@ const LoginForm = () => {
                         const user = result.user;
                         console.log(user);
                         setSuccess('Successfully Login')
+                        navigate('/')
                   }).catch(error => setError(error.message))
       }
 

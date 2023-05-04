@@ -7,10 +7,14 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 
 const NavigateBar = () => {
       const { user, logOut } = useContext(AuthContext)
+      const [isHovering, setIsHovering] = useState(false);
+
 
       const handleSignOut = () => {
             logOut()
                   .then(() => {
+                        const [isHovering, setIsHovering] = useState(false);
+
                         console.log('successfully signout');
                   }).catch((error) => {
                         console.log(error.message);
@@ -34,11 +38,26 @@ const NavigateBar = () => {
 
                                     {
                                           user ? <>
-                                                {
-                                                      user.photoURL ? <>
-                                                            <img style={{width:'60px', height:'60px'}} className=' bg-light me-3 rounded-circle ' src={user?.photoURL} alt="profile" />
-                                                      </> : <CgProfile className=' me-3' size={40}/>
-                                                }
+                                                <div>
+                                                      <div className='position-relative'>
+                                                            {user.photoURL ? (
+                                                                  <img
+                                                                        style={{ width: '60px', height: '60px' }}
+                                                                        className='bg-light me-3 rounded-circle'
+                                                                        src={user?.photoURL}
+                                                                        alt='profile'
+                                                                        onMouseEnter={() => setIsHovering(true)}
+                                                                        onMouseLeave={() => setIsHovering(false)}
+                                                                  />
+                                                            ) : (
+                                                                  <CgProfile className='me-3' size={40} />
+                                                            )}
+                                                            <div style={{fontSize:'8px', top:'10px', fontWeight:'700'}} className={`hover-display-name position-absolute text-white  fs-6 ${isHovering ? 'd-block' : 'd-none'}`}>
+                                                                  {user.displayName}
+                                                            </div>
+                                                      </div>
+                                                </div>
+
                                                 <Button onClick={handleSignOut} variant='outline-secondary'>Logout</Button>
                                           </>
                                                 : <>

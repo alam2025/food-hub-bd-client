@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const RegistrationForm = () => {
+      const navigate= useNavigate()
       const { createUser, userProfile,logOut } = useContext(AuthContext);
       const [success, setSuccess]=useState('')
       const [error, setError]=useState('')
@@ -20,18 +21,22 @@ const RegistrationForm = () => {
             const password = form.password.value;
             const name = form.name.value;
             const photoUrl = form.photourl.value;
-            // console.log(name,email,password,photoUrl);
+            if(password.lenght < 6){
+                  setError('Password atleast 6 characters.')
+            }
 
             createUser(email, password)
                   .then(result => {
                         const user = result.user;
                         userProfile(name, photoUrl)
-                        setSuccess('Successfully Registered')
+                       alert('Successfully Registered !!! Please login.')
                         logOut()
                         setError('')
+                        navigate('/login')
 
                   }).catch(error => {
                         console.log(error.message)
+                        setError(error.message)
                         setSuccess('')
                   })
 
