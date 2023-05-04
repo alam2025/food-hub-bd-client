@@ -6,6 +6,7 @@ import ChefCard from '../Chefs/ChefCard';
 import PopularRecipe from '../PopularRecipe/PopularRecipe';
 import { RecipeContext } from '../../Layout/MainLayout';
 import RecipeListCart from '../RecipeList/RecipeListCart';
+import LazyLoad from 'react-lazy-load';
 
 const Home = () => {
       const [fold, setFold] = useState(true)
@@ -27,7 +28,7 @@ const Home = () => {
       return (
             <div className=' container mt-5 mb-5'>
 
-            {/* ...........List of Recipies.......... */}
+                  {/* ...........List of Recipies.......... */}
                   <div>
                         <h1 className='my-5 text-center'>List Of Recipes</h1>
                         <div className='d-flex justify-content-end '>
@@ -36,12 +37,14 @@ const Home = () => {
                               </button>
 
                         </div>
-                        <Row xs={2} md={3} lg={5} className="g-4">
+
+                        <Row xs={2} md={4} lg={8} className="g-4">
                               {recipies.map(recipe => <RecipeListCart
                                     key={recipe.id}
                                     recipe={recipe}
                               />)}
                         </Row>
+
 
                   </div>
 

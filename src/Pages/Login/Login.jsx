@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 
 const Login = () => {
       return (
-            <div style={{ minHeight: '100vh' }} className=' d-flex flex-column container'>
+            <div style={{ minHeight: '100vh' }} className=' d-flex flex-column '>
                   <NavigateBar/>
                   <LoginForm/>
                   <Footer/>

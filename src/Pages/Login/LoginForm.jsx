@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -13,6 +13,11 @@ const LoginForm = () => {
       const { userSignIn } = useContext(AuthContext);
       const { googleSignIn } = useContext(AuthContext);
       const { githubSignIn } = useContext(AuthContext);
+      const location = useLocation();
+      
+      // console.log(location);
+      const from = location.state?.from?.pathname || '/';
+      // console.log(from);
 
       const handleSubmit = (event) => {
             event.preventDefault();
@@ -29,7 +34,7 @@ const LoginForm = () => {
                         const user = result.user;
                         console.log(user);
                         setSuccess('Successfully Login')
-                        navigate('/')
+                        navigate(from, {replace:true})
                   }).catch(error => setError(error.message))
 
       };
@@ -43,7 +48,7 @@ const LoginForm = () => {
                         const user = result.user;
                         console.log(user);
                         setSuccess('Successfully Login')
-                        navigate('/')
+                        navigate(from, {replace:true})
                   }).catch(error => setError(error.message))
 
       }
@@ -56,7 +61,7 @@ const LoginForm = () => {
                         const user = result.user;
                         console.log(user);
                         setSuccess('Successfully Login')
-                        navigate('/')
+                        navigate(from, {replace:true})
                   }).catch(error => setError(error.message))
       }
 

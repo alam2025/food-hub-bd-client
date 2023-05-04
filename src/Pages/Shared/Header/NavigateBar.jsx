@@ -25,7 +25,7 @@ const NavigateBar = () => {
             <div className='container'>
                   <Navbar expand="lg mb-2">
                         <Container fluid>
-                              <Navbar.Brand href="/"><img className=' w-25' src={logo} alt="" /></Navbar.Brand>
+                              <Link to='/'><Navbar.Brand ><img className=' w-25' src={logo} alt="" /></Navbar.Brand></Link>
                               <Navbar.Toggle aria-controls="navbarScroll" />
                               <Navbar.Collapse id="navbarScroll">
                                     <Nav

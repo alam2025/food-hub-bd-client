@@ -1,14 +1,17 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
-      const { id,pictureUrl, chefName, yearsOfExperience, numRecipes, likes } = chef;
-      
+      const { id, pictureUrl, chefName, yearsOfExperience, numRecipes, likes } = chef;
+
       return (
             <Col >
                   <Card >
-                        <Card.Img variant="top" style={{height:'300px'}} src={pictureUrl} alt={chefName} />
+                        <LazyLoad height={300} threshold={0.90}>
+                              <Card.Img variant="top" style={{ height: '300px' }} src={pictureUrl} alt={chefName} />
+                        </LazyLoad>
                         <Card.Body>
                               <Card.Title>{chefName}</Card.Title>
                               <div className=' d-flex flex-column gap-0'>
@@ -19,7 +22,7 @@ const ChefCard = ({ chef }) => {
                         </Card.Body>
                         <Card.Footer className='px-0 pb-0   d-flex justify-content-center border-0 bg-transparent'>
                               <Link to={`/recipes/${id}`} className='w-100 text-center text-decoration-none text-white  py-2 border-0 rounded-bottom-2 btn-primary'>
-                              View Recipes
+                                    View Recipes
                               </Link>
                               {/* */}
                         </Card.Footer>

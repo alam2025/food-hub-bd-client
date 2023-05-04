@@ -10,6 +10,7 @@ import Register from "../Pages/Login/Register";
 import RecipeDetails from "../Pages/PopularRecipe/RecipeDetails";
 import PopularRecipe from "../Pages/PopularRecipe/PopularRecipe";
 import PopularRecipeLayput from "../Layout/PopularRecipeLayput";
+import PrivateRouter from "./PrivateRouter";
 
 
 
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
             children: [
                   {
                         path: ':id',
-                        element: <RecipePortal />,
+                        element: <PrivateRouter><RecipePortal /></PrivateRouter>,
                         loader: ({ params }) => fetch(`http://localhost:3000/chef/${params.id}`)
                   }
             ]
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
             children:[
                   {
                         path:':id',
-                        element: <RecipeDetails/>,
+                        element: <PrivateRouter><RecipeDetails/></PrivateRouter>,
                         loader:({params})=>fetch(`http://localhost:3000/popular-recipe/${params.id}`)
                   }
             ]
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
      {
       path: 'register',
       element: <Register/>
+     },
+     {
+      path:'blog',
+      element:<Blog/>,
      }
      
 ])

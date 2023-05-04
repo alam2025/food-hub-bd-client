@@ -3,17 +3,20 @@ import React from 'react';
 import banner1 from './../../../assets/banner-1.jpg'
 import banner2 from '../../../assets/banner-2.jpg'
 import banner3 from '../../../assets/banner3.png'
+import LazyLoad from 'react-lazy-load';
 
 const Banner = () => {
       return (
             <div>
                   <Carousel>
-                        <Carousel.Item>
-                              <img
-                                    className="d-block w-100"
-                                    src={banner3}
-                                    alt="First slide"
-                              />
+                        <Carousel.Item >
+                              <LazyLoad threshold={0.80}>
+                                    <img
+                                          className="d-block w-100"
+                                          src={banner3}
+                                          alt="First slide"
+                                    />
+                              </LazyLoad>
                               <Carousel.Caption>
                                     <h1 className=' fw-bolder' >Deliciousness </h1>
                                     <h4>FRESH AND SPICY</h4>
