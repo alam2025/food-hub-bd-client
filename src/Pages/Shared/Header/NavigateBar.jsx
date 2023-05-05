@@ -22,13 +22,13 @@ const NavigateBar = () => {
       }
 
       return (
-            <div className='container'>
+            <div className='container mb-5'>
                   <Navbar expand="lg mb-2">
                         <Container fluid>
                               <Link to='/'><Navbar.Brand ><img className=' w-25' src={logo} alt="" /></Navbar.Brand></Link>
                               <Navbar.Toggle aria-controls="navbarScroll" />
                               <Navbar.Collapse id="navbarScroll ">
-                                    <Nav className="me-3 my-2 my-lg-0 d-flex gap-4 "
+                                    <Nav className="me-2 my-2 my-lg-0 d-flex gap-4 "
                                           style={{ maxHeight: '100px' }}
                                           navbarScroll >
 
@@ -37,9 +37,9 @@ const NavigateBar = () => {
                                           <Link to='/blog' className={`text-decoration-none px-2 py-1 text-dark ${location.pathname === '/blog' ? 'active' : ''}`}>Blog</Link>
 
                                           <Link to='/favourite' className={`position-relative text-decoration-none me-5 px-2 py-1 text-dark ${location.pathname === '/favourite' ? 'active' : ''}`}>
-                                               
+
                                                 Favourite
-                                                
+
                                           </Link>
                                     </Nav>
 
@@ -48,20 +48,22 @@ const NavigateBar = () => {
                                                 <div>
                                                       <div className='position-relative'>
                                                             {user.photoURL ? (
-                                                                  <img
-                                                                        style={{ width: '60px', height: '60px' }}
-                                                                        className='bg-light me-3 rounded-circle'
-                                                                        src={user?.photoURL}
-                                                                        alt='profile'
-                                                                        onMouseEnter={() => setIsHovering(true)}
-                                                                        onMouseLeave={() => setIsHovering(false)}
-                                                                  />
+                                                                  <Link to='/profile'>
+                                                                        <img
+                                                                              style={{ width: '60px', height: '60px' }}
+                                                                              className='bg-light me-3 rounded-circle'
+                                                                              src={user?.photoURL}
+                                                                              alt='profile'
+                                                                              onMouseEnter={() => setIsHovering(true)}
+                                                                              onMouseLeave={() => setIsHovering(false)}
+                                                                        />
+                                                                  </Link>
                                                             ) : (
                                                                   <CgProfile className='me-3' size={40} />
                                                             )}
-                                                            <div style={{ fontSize: '8px', top: '10px', fontWeight: '700' }} className={`hover-display-name position-absolute text-white fs-6 ${isHovering ? 'd-block' : 'd-none'}`}>
+                                                            <h6 style={{width:'120px', marginLeft:'-30px', fontSize: '8px', top: '70px', fontWeight: '700' }} className={`hover-display-name py-2 rounded px- position-absolute text-white ps-2 fs-6 bg-dark ${isHovering ? 'd-block' : 'd-none'}`}>
                                                                   {user.displayName}
-                                                            </div>
+                                                            </h6>
                                                       </div>
                                                 </div>
 

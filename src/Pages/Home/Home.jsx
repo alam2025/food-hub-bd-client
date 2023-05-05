@@ -48,7 +48,7 @@ const Home = () => {
 
                   </div>
 
-                  <div>
+                  <div id='chefs'>
 
                         <h1 className='my-5 text-center'>Popular Chefs</h1>
                         <div className='d-flex justify-content-end my-2'>
