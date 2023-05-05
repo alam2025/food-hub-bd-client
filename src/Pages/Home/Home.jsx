@@ -61,6 +61,7 @@ const Home = () => {
                               {chefs.map((chef) => <ChefCard
                                     key={chef.id}
                                     chef={chef}
+                                    
                               />)}
 
                         </Row>

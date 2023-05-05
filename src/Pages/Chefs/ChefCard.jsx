@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Col } from 'react-bootstrap';
 import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
+import { RecipeContext } from '../../Layout/MainLayout';
 
 const ChefCard = ({ chef }) => {
+      const recipes= useContext(RecipeContext)
       const { id, pictureUrl, chefName, yearsOfExperience, numRecipes, likes } = chef;
+
+      // console.log(id);
+      const noOfRecupe= recipes.filter(r=>r.chef_id == id);
+      
+      // console.log(noOfRecupe);
 
       return (
             <Col >
@@ -16,7 +23,7 @@ const ChefCard = ({ chef }) => {
                               <Card.Title>{chefName}</Card.Title>
                               <div className=' d-flex flex-column gap-0'>
                                     <span>Experiece : {yearsOfExperience}</span>
-                                    <span>No. of Recipes : {numRecipes}</span>
+                                    <span>No. of Recipes : {noOfRecupe.length}</span>
                                     <span>Likes : {likes}</span>
                               </div>
                         </Card.Body>
